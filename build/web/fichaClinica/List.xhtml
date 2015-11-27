@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListFichaClinicaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListFichaClinicaEmpty}" rendered="#{fichaClinicaController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{fichaClinicaController.items.rowCount > 0}">
+                    <h:outputText value="#{fichaClinicaController.pagination.pageFirstItem + 1}..#{fichaClinicaController.pagination.pageLastItem + 1}/#{fichaClinicaController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{fichaClinicaController.previous}" value="#{bundle.Previous} #{fichaClinicaController.pagination.pageSize}" rendered="#{fichaClinicaController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{fichaClinicaController.next}" value="#{bundle.Next} #{fichaClinicaController.pagination.pageSize}" rendered="#{fichaClinicaController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{fichaClinicaController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListFichaClinicaTitle_idFichaClinica}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idFichaClinica}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListFichaClinicaTitle_fechaFichaClinica}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaFichaClinica}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListFichaClinicaTitle_numFichaClinica}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.numFichaClinica}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListFichaClinicaTitle_idHistoriaClinica}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idHistoriaClinica}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{fichaClinicaController.prepareView}" value="#{bundle.ListFichaClinicaViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{fichaClinicaController.prepareEdit}" value="#{bundle.ListFichaClinicaEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{fichaClinicaController.destroy}" value="#{bundle.ListFichaClinicaDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{fichaClinicaController.prepareCreate}" value="#{bundle.ListFichaClinicaCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListFichaClinicaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

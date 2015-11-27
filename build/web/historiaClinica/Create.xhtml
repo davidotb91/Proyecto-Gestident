@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateHistoriaClinicaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateHistoriaClinicaLabel_idHistoriaClinica}" for="idHistoriaClinica" />
+                    <h:inputText id="idHistoriaClinica" value="#{historiaClinicaController.selected.idHistoriaClinica}" title="#{bundle.CreateHistoriaClinicaTitle_idHistoriaClinica}" required="true" requiredMessage="#{bundle.CreateHistoriaClinicaRequiredMessage_idHistoriaClinica}"/>
+                    <h:outputLabel value="#{bundle.CreateHistoriaClinicaLabel_fechaHistoriaClinica}" for="fechaHistoriaClinica" />
+                    <h:inputText id="fechaHistoriaClinica" value="#{historiaClinicaController.selected.fechaHistoriaClinica}" title="#{bundle.CreateHistoriaClinicaTitle_fechaHistoriaClinica}" required="true" requiredMessage="#{bundle.CreateHistoriaClinicaRequiredMessage_fechaHistoriaClinica}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateHistoriaClinicaLabel_motivoHistoriaClinica}" for="motivoHistoriaClinica" />
+                    <h:inputText id="motivoHistoriaClinica" value="#{historiaClinicaController.selected.motivoHistoriaClinica}" title="#{bundle.CreateHistoriaClinicaTitle_motivoHistoriaClinica}" required="true" requiredMessage="#{bundle.CreateHistoriaClinicaRequiredMessage_motivoHistoriaClinica}"/>
+                    <h:outputLabel value="#{bundle.CreateHistoriaClinicaLabel_numHistoriaClinica}" for="numHistoriaClinica" />
+                    <h:inputText id="numHistoriaClinica" value="#{historiaClinicaController.selected.numHistoriaClinica}" title="#{bundle.CreateHistoriaClinicaTitle_numHistoriaClinica}" required="true" requiredMessage="#{bundle.CreateHistoriaClinicaRequiredMessage_numHistoriaClinica}"/>
+                    <h:outputLabel value="#{bundle.CreateHistoriaClinicaLabel_codicoHistoriaClinica}" for="codicoHistoriaClinica" />
+                    <h:inputText id="codicoHistoriaClinica" value="#{historiaClinicaController.selected.codicoHistoriaClinica}" title="#{bundle.CreateHistoriaClinicaTitle_codicoHistoriaClinica}" required="true" requiredMessage="#{bundle.CreateHistoriaClinicaRequiredMessage_codicoHistoriaClinica}"/>
+                    <h:outputLabel value="#{bundle.CreateHistoriaClinicaLabel_registroDentalFichaDental}" for="registroDentalFichaDental" />
+                    <h:inputText id="registroDentalFichaDental" value="#{historiaClinicaController.selected.registroDentalFichaDental}" title="#{bundle.CreateHistoriaClinicaTitle_registroDentalFichaDental}" />
+                    <h:outputLabel value="#{bundle.CreateHistoriaClinicaLabel_diagnosticoFichaDental}" for="diagnosticoFichaDental" />
+                    <h:inputText id="diagnosticoFichaDental" value="#{historiaClinicaController.selected.diagnosticoFichaDental}" title="#{bundle.CreateHistoriaClinicaTitle_diagnosticoFichaDental}" />
+                    <h:outputLabel value="#{bundle.CreateHistoriaClinicaLabel_idFichaClinica}" for="idFichaClinica" />
+                    <h:selectOneMenu id="idFichaClinica" value="#{historiaClinicaController.selected.idFichaClinica}" title="#{bundle.CreateHistoriaClinicaTitle_idFichaClinica}" >
+                        <f:selectItems value="#{fichaClinicaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateHistoriaClinicaLabel_idDoctor}" for="idDoctor" />
+                    <h:selectOneMenu id="idDoctor" value="#{historiaClinicaController.selected.idDoctor}" title="#{bundle.CreateHistoriaClinicaTitle_idDoctor}" >
+                        <f:selectItems value="#{doctorController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{historiaClinicaController.create}" value="#{bundle.CreateHistoriaClinicaSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{historiaClinicaController.prepareList}" value="#{bundle.CreateHistoriaClinicaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateHistoriaClinicaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

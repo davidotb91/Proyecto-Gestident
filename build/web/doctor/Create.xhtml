@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateDoctorTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateDoctorLabel_idDoctor}" for="idDoctor" />
+                    <h:inputText id="idDoctor" value="#{doctorController.selected.idDoctor}" title="#{bundle.CreateDoctorTitle_idDoctor}" required="true" requiredMessage="#{bundle.CreateDoctorRequiredMessage_idDoctor}"/>
+                    <h:outputLabel value="#{bundle.CreateDoctorLabel_nombresDoctor}" for="nombresDoctor" />
+                    <h:inputText id="nombresDoctor" value="#{doctorController.selected.nombresDoctor}" title="#{bundle.CreateDoctorTitle_nombresDoctor}" required="true" requiredMessage="#{bundle.CreateDoctorRequiredMessage_nombresDoctor}"/>
+                    <h:outputLabel value="#{bundle.CreateDoctorLabel_apellidosDoctor}" for="apellidosDoctor" />
+                    <h:inputText id="apellidosDoctor" value="#{doctorController.selected.apellidosDoctor}" title="#{bundle.CreateDoctorTitle_apellidosDoctor}" required="true" requiredMessage="#{bundle.CreateDoctorRequiredMessage_apellidosDoctor}"/>
+                    <h:outputLabel value="#{bundle.CreateDoctorLabel_ciDoctor}" for="ciDoctor" />
+                    <h:inputText id="ciDoctor" value="#{doctorController.selected.ciDoctor}" title="#{bundle.CreateDoctorTitle_ciDoctor}" required="true" requiredMessage="#{bundle.CreateDoctorRequiredMessage_ciDoctor}"/>
+                    <h:outputLabel value="#{bundle.CreateDoctorLabel_especialidadDoctor}" for="especialidadDoctor" />
+                    <h:inputText id="especialidadDoctor" value="#{doctorController.selected.especialidadDoctor}" title="#{bundle.CreateDoctorTitle_especialidadDoctor}" required="true" requiredMessage="#{bundle.CreateDoctorRequiredMessage_especialidadDoctor}"/>
+                    <h:outputLabel value="#{bundle.CreateDoctorLabel_numConsultorioDoctor}" for="numConsultorioDoctor" />
+                    <h:inputText id="numConsultorioDoctor" value="#{doctorController.selected.numConsultorioDoctor}" title="#{bundle.CreateDoctorTitle_numConsultorioDoctor}" required="true" requiredMessage="#{bundle.CreateDoctorRequiredMessage_numConsultorioDoctor}"/>
+                    <h:outputLabel value="#{bundle.CreateDoctorLabel_emailDoctor}" for="emailDoctor" />
+                    <h:inputText id="emailDoctor" value="#{doctorController.selected.emailDoctor}" title="#{bundle.CreateDoctorTitle_emailDoctor}" required="true" requiredMessage="#{bundle.CreateDoctorRequiredMessage_emailDoctor}"/>
+                    <h:outputLabel value="#{bundle.CreateDoctorLabel_telefonoFijoDoctor}" for="telefonoFijoDoctor" />
+                    <h:inputText id="telefonoFijoDoctor" value="#{doctorController.selected.telefonoFijoDoctor}" title="#{bundle.CreateDoctorTitle_telefonoFijoDoctor}" required="true" requiredMessage="#{bundle.CreateDoctorRequiredMessage_telefonoFijoDoctor}"/>
+                    <h:outputLabel value="#{bundle.CreateDoctorLabel_celularDoctor}" for="celularDoctor" />
+                    <h:inputText id="celularDoctor" value="#{doctorController.selected.celularDoctor}" title="#{bundle.CreateDoctorTitle_celularDoctor}" required="true" requiredMessage="#{bundle.CreateDoctorRequiredMessage_celularDoctor}"/>
+                    <h:outputLabel value="#{bundle.CreateDoctorLabel_fechaNacimientoDoctor}" for="fechaNacimientoDoctor" />
+                    <h:inputText id="fechaNacimientoDoctor" value="#{doctorController.selected.fechaNacimientoDoctor}" title="#{bundle.CreateDoctorTitle_fechaNacimientoDoctor}" required="true" requiredMessage="#{bundle.CreateDoctorRequiredMessage_fechaNacimientoDoctor}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateDoctorLabel_passwordDoctor}" for="passwordDoctor" />
+                    <h:inputText id="passwordDoctor" value="#{doctorController.selected.passwordDoctor}" title="#{bundle.CreateDoctorTitle_passwordDoctor}" required="true" requiredMessage="#{bundle.CreateDoctorRequiredMessage_passwordDoctor}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{doctorController.create}" value="#{bundle.CreateDoctorSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{doctorController.prepareList}" value="#{bundle.CreateDoctorShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateDoctorIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

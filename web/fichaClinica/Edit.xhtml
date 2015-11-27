@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditFichaClinicaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditFichaClinicaLabel_idFichaClinica}" for="idFichaClinica" />
+                    <h:inputText id="idFichaClinica" value="#{fichaClinicaController.selected.idFichaClinica}" title="#{bundle.EditFichaClinicaTitle_idFichaClinica}" required="true" requiredMessage="#{bundle.EditFichaClinicaRequiredMessage_idFichaClinica}"/>
+                    <h:outputLabel value="#{bundle.EditFichaClinicaLabel_fechaFichaClinica}" for="fechaFichaClinica" />
+                    <h:inputText id="fechaFichaClinica" value="#{fichaClinicaController.selected.fechaFichaClinica}" title="#{bundle.EditFichaClinicaTitle_fechaFichaClinica}" required="true" requiredMessage="#{bundle.EditFichaClinicaRequiredMessage_fechaFichaClinica}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditFichaClinicaLabel_numFichaClinica}" for="numFichaClinica" />
+                    <h:inputText id="numFichaClinica" value="#{fichaClinicaController.selected.numFichaClinica}" title="#{bundle.EditFichaClinicaTitle_numFichaClinica}" required="true" requiredMessage="#{bundle.EditFichaClinicaRequiredMessage_numFichaClinica}"/>
+                    <h:outputLabel value="#{bundle.EditFichaClinicaLabel_idHistoriaClinica}" for="idHistoriaClinica" />
+                    <h:selectOneMenu id="idHistoriaClinica" value="#{fichaClinicaController.selected.idHistoriaClinica}" title="#{bundle.EditFichaClinicaTitle_idHistoriaClinica}" >
+                        <f:selectItems value="#{historiaClinicaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{fichaClinicaController.update}" value="#{bundle.EditFichaClinicaSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditFichaClinicaViewLink}"/>
+                <br />
+                <h:commandLink action="#{fichaClinicaController.prepareList}" value="#{bundle.EditFichaClinicaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditFichaClinicaIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

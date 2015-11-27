@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreatePacienteTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreatePacienteLabel_idPaciente}" for="idPaciente" />
+                    <h:inputText id="idPaciente" value="#{pacienteController.selected.idPaciente}" title="#{bundle.CreatePacienteTitle_idPaciente}" required="true" requiredMessage="#{bundle.CreatePacienteRequiredMessage_idPaciente}"/>
+                    <h:outputLabel value="#{bundle.CreatePacienteLabel_nombresPaciente}" for="nombresPaciente" />
+                    <h:inputText id="nombresPaciente" value="#{pacienteController.selected.nombresPaciente}" title="#{bundle.CreatePacienteTitle_nombresPaciente}" required="true" requiredMessage="#{bundle.CreatePacienteRequiredMessage_nombresPaciente}"/>
+                    <h:outputLabel value="#{bundle.CreatePacienteLabel_apellidosPaciente}" for="apellidosPaciente" />
+                    <h:inputText id="apellidosPaciente" value="#{pacienteController.selected.apellidosPaciente}" title="#{bundle.CreatePacienteTitle_apellidosPaciente}" required="true" requiredMessage="#{bundle.CreatePacienteRequiredMessage_apellidosPaciente}"/>
+                    <h:outputLabel value="#{bundle.CreatePacienteLabel_ciPaciente}" for="ciPaciente" />
+                    <h:inputText id="ciPaciente" value="#{pacienteController.selected.ciPaciente}" title="#{bundle.CreatePacienteTitle_ciPaciente}" required="true" requiredMessage="#{bundle.CreatePacienteRequiredMessage_ciPaciente}"/>
+                    <h:outputLabel value="#{bundle.CreatePacienteLabel_emailPaciente}" for="emailPaciente" />
+                    <h:inputText id="emailPaciente" value="#{pacienteController.selected.emailPaciente}" title="#{bundle.CreatePacienteTitle_emailPaciente}" required="true" requiredMessage="#{bundle.CreatePacienteRequiredMessage_emailPaciente}"/>
+                    <h:outputLabel value="#{bundle.CreatePacienteLabel_telefonoFijoPaciente}" for="telefonoFijoPaciente" />
+                    <h:inputText id="telefonoFijoPaciente" value="#{pacienteController.selected.telefonoFijoPaciente}" title="#{bundle.CreatePacienteTitle_telefonoFijoPaciente}" required="true" requiredMessage="#{bundle.CreatePacienteRequiredMessage_telefonoFijoPaciente}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreatePacienteLabel_celularPaciente}" for="celularPaciente" />
+                    <h:inputText id="celularPaciente" value="#{pacienteController.selected.celularPaciente}" title="#{bundle.CreatePacienteTitle_celularPaciente}" />
+                    <h:outputLabel value="#{bundle.CreatePacienteLabel_passwordPaciente}" for="passwordPaciente" />
+                    <h:inputText id="passwordPaciente" value="#{pacienteController.selected.passwordPaciente}" title="#{bundle.CreatePacienteTitle_passwordPaciente}" required="true" requiredMessage="#{bundle.CreatePacienteRequiredMessage_passwordPaciente}"/>
+                    <h:outputLabel value="#{bundle.CreatePacienteLabel_tipoSangrePaciente}" for="tipoSangrePaciente" />
+                    <h:inputText id="tipoSangrePaciente" value="#{pacienteController.selected.tipoSangrePaciente}" title="#{bundle.CreatePacienteTitle_tipoSangrePaciente}" />
+                    <h:outputLabel value="#{bundle.CreatePacienteLabel_alergiasPaciente}" for="alergiasPaciente" />
+                    <h:inputText id="alergiasPaciente" value="#{pacienteController.selected.alergiasPaciente}" title="#{bundle.CreatePacienteTitle_alergiasPaciente}" />
+                    <h:outputLabel value="#{bundle.CreatePacienteLabel_idHistoriaClinica}" for="idHistoriaClinica" />
+                    <h:selectOneMenu id="idHistoriaClinica" value="#{pacienteController.selected.idHistoriaClinica}" title="#{bundle.CreatePacienteTitle_idHistoriaClinica}" >
+                        <f:selectItems value="#{historiaClinicaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreatePacienteLabel_idCita}" for="idCita" />
+                    <h:selectOneMenu id="idCita" value="#{pacienteController.selected.idCita}" title="#{bundle.CreatePacienteTitle_idCita}" >
+                        <f:selectItems value="#{citaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{pacienteController.create}" value="#{bundle.CreatePacienteSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{pacienteController.prepareList}" value="#{bundle.CreatePacienteShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreatePacienteIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
