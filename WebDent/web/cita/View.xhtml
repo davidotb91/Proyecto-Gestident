@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CitaViewDlg" widgetVar="CitaViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewCitaTitle}">
+            <h:form id="CitaViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{citaController.selected != null}">
+                        <h:outputText value="#{bundle.ViewCitaLabel_idCita}"/>
+                        <h:outputText value="#{citaController.selected.idCita}" title="#{bundle.ViewCitaTitle_idCita}"/>
+                        <h:outputText value="#{bundle.ViewCitaLabel_fechaCitaMedica}"/>
+                        <h:outputText value="#{citaController.selected.fechaCitaMedica}" title="#{bundle.ViewCitaTitle_fechaCitaMedica}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewCitaLabel_horaCitaMedica}"/>
+                        <h:outputText value="#{citaController.selected.horaCitaMedica}" title="#{bundle.ViewCitaTitle_horaCitaMedica}">
+                            <f:convertDateTime pattern="HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewCitaLabel_codigoCitaMedica}"/>
+                        <h:outputText value="#{citaController.selected.codigoCitaMedica}" title="#{bundle.ViewCitaTitle_codigoCitaMedica}"/>
+                        <h:outputText value="#{bundle.ViewCitaLabel_idDoctor}"/>
+                        <h:outputText value="#{citaController.selected.idDoctor}" title="#{bundle.ViewCitaTitle_idDoctor}"/>
+                        <h:outputText value="#{bundle.ViewCitaLabel_idPaciente}"/>
+                        <h:outputText value="#{citaController.selected.idPaciente}" title="#{bundle.ViewCitaTitle_idPaciente}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="CitaViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

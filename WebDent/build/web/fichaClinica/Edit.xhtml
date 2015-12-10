@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="FichaClinicaEditDlg" widgetVar="FichaClinicaEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditFichaClinicaTitle}">
+            <h:form id="FichaClinicaEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{fichaClinicaController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditFichaClinicaLabel_idFichaClinica}" for="idFichaClinica" />
+                        <p:inputText id="idFichaClinica" value="#{fichaClinicaController.selected.idFichaClinica}" title="#{bundle.EditFichaClinicaTitle_idFichaClinica}" required="true" requiredMessage="#{bundle.EditFichaClinicaRequiredMessage_idFichaClinica}"/>
+                        <p:outputLabel value="#{bundle.EditFichaClinicaLabel_fechaFichaClinica}" for="fechaFichaClinica" />
+                        <p:calendar id="fechaFichaClinica" pattern="MM/dd/yyyy" value="#{fichaClinicaController.selected.fechaFichaClinica}" title="#{bundle.EditFichaClinicaTitle_fechaFichaClinica}" required="true" requiredMessage="#{bundle.EditFichaClinicaRequiredMessage_fechaFichaClinica}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditFichaClinicaLabel_numFichaClinica}" for="numFichaClinica" />
+                        <p:inputText id="numFichaClinica" value="#{fichaClinicaController.selected.numFichaClinica}" title="#{bundle.EditFichaClinicaTitle_numFichaClinica}" required="true" requiredMessage="#{bundle.EditFichaClinicaRequiredMessage_numFichaClinica}"/>
+                        <p:outputLabel value="#{bundle.EditFichaClinicaLabel_idHistoriaClinica}" for="idHistoriaClinica" />
+                        <p:selectOneMenu id="idHistoriaClinica" value="#{fichaClinicaController.selected.idHistoriaClinica}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{historiaClinicaController.itemsAvailableSelectOne}"
+                                           var="idHistoriaClinicaItem"
+                                           itemValue="#{idHistoriaClinicaItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{fichaClinicaController.update}" value="#{bundle.Save}" update="display,:FichaClinicaListForm:datalist,:growl" oncomplete="handleSubmit(args, 'FichaClinicaEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="FichaClinicaEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
